@@ -18,6 +18,20 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import LoginScreen from "../screens/LoginScreen";
+
+const Auth = () => {
+    // Stack Navigator for Login and Sign up Screen
+    return (
+        <Stack.Navigator initialRouteName="LoginScreen">
+            <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{headerShown: false}}
+            />
+        </Stack.Navigator>
+    );
+};
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -40,6 +54,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Auth" component={Auth} options={{headerShown: false}} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
